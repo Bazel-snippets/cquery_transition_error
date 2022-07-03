@@ -1,0 +1,21 @@
+# load("multistring_flag.bzl", "multistring_flag")
+load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
+load("transistor.bzl", "dummy_rule", "transistor_rule")
+
+string_flag(
+    name = "flavor",
+    build_setting_default = "opt",
+    values = [
+        "opt",
+        "dbg",
+    ],
+)
+
+dummy_rule(
+    name = "dummy",
+)
+
+transistor_rule(
+    name = "transistor",
+    deps = ["dummy"],
+)
